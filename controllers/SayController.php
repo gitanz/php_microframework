@@ -4,6 +4,7 @@
 namespace controllers;
 
 
+use requests\SayRequest;
 use system\Request;
 use system\Response;
 
@@ -11,9 +12,28 @@ class SayController
 {
     public function __construct(){}
 
-    public function hello(Request $request, Response $response){
+    public function hello(SayRequest $request, Response $response){
+        if(!$request->authorized)
+        {
+            return [
+                'body' => ['success'=> true, 'message' => 'Unauthorized'],
+                'status_code' => 401
+            ];
+        }
+        if(!$request->valid)
+        {
+            return [
+                'body' => ['success'=> true, 'message' => 'Invalid request'],
+                'status_code' => 400
+            ];
+        }
+        return [
+            'body' => ['success'=> true, 'message' => 'hello'],
+            'status_code' => 200
+        ];
 
-        return $response->toJson(['success'=> true, 'message' => 'hello'], 200);
+
+
     }
 
 }

@@ -43,7 +43,7 @@ class Pipeline
 
     public function errorOutlet()
     {
-        $response = new Response();
+        $response = Response::getInstance();
         switch ($this->error):
             case 404:
                 $response->send404();

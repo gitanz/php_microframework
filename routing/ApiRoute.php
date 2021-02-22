@@ -40,7 +40,6 @@ class ApiRoute
         {
             $this->uri =  str_replace($matches[1], '(\w+)', $this->uri);
         }
-
     }
 
     public function getUri($uri)

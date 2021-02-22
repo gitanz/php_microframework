@@ -6,8 +6,20 @@ namespace system;
 
 class Response
 {
-    public function __construct()
+    private $handled;
+    private static $instance;
+
+    private function __construct()
     {}
+
+    public static function getInstance()
+    {
+        if( is_null(self::$instance))
+        {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
 
     public function toJson(array $data, $response_code=200, array $headers = [])
     {
@@ -17,7 +29,9 @@ class Response
         {
             header("$name: $text");
         }
+
         echo json_encode($data);
+        $this->handled = true;
         return $data;
     }
 
@@ -31,6 +45,7 @@ class Response
         }
         $data = ["success"=>false, "message"=>"Not found"];
         echo json_encode($data);
+        $this->handled = true;
         return $data;
     }
 
@@ -44,6 +59,12 @@ class Response
         }
         $data = ["success"=>false, "message"=>"Method not allowed"];
         echo json_encode($data);
+        $this->handled = true;
         return $data;
+    }
+
+    public function isHandled()
+    {
+        return (bool)$this->handled;
     }
 }
