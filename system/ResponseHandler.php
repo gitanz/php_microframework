@@ -19,7 +19,8 @@ class ResponseHandler
     {
         if(!$this->response->isHandled())
         {
-            $headers = ["Content-Type" => "application/json"];
+            header("Content-Type: application/json");
+
             if(isset($response['status_code']))
             {
                 http_response_code($response['status_code']);
