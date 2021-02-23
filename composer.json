@@ -1,0 +1,25 @@
+{
+    "name": "anooz/microframework",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9"
+    },
+    "authors": [
+        {
+            "name": "Anooz Prasai",
+            "email": "prasaianooz@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/",
+            "facades\\": "facades/",
+            "routing\\": "routing/",
+            "system\\": "system/",
+            "tests\\": "tests/"
+        }
+    }
+}

@@ -2,7 +2,7 @@
 
 use system\RequestHandler;
 use system\ResponseHandler;
-
+include "./vendor/autoload.php";
 include "./system/bootstrap.php";
 
 $container = system\DIContainer::getInstance();

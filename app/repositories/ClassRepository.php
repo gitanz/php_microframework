@@ -6,6 +6,7 @@ namespace app\repositories;
 
 use app\factories\ClassFactory;
 use app\models\ClassModel;
+use PHPUnit\Util\Exception;
 
 class ClassRepository
 {
@@ -64,9 +65,12 @@ class ClassRepository
     public function acquireLock($class)
     {
         try{
-            $class->lock = true;
-            $this->updateClass($class);
-            return true;
+            if($class->lock == false){
+                $class->lock = true;
+                $this->updateClass($class);
+                return true;
+            }
+            throw new Exception("class locked");
         }catch (\Exception $e)
         {
             return false;

@@ -1,4 +1,5 @@
-
+# returns all classes from 2021-04-01 to 2021-04-10
+# should give response code 201
 POST http://localhost:80/api/class
 Content-Type: application/json
 
@@ -10,7 +11,26 @@ Content-Type: application/json
 }
 
 ###
+# should throw validation error
+# start_date should be greater than end_date
+# class_name should be greater than 4 characters
+# 400 status code
+POST http://localhost:80/api/class
+Content-Type: application/json
 
+{
+  "class_name": "Pi",
+  "start_date": "2021-04-10",
+  "end_date": "2021-04-01",
+  "capacity": "20"
+}
+
+###
+#
+# returns booking
+# returns all classes
+# capacity of class dated 2021-04-01 should be decreased from 20 to 19
+# should give status_code 201 created
 POST http://localhost:80/api/bookings
 Content-Type: application/json
 
@@ -20,3 +40,33 @@ Content-Type: application/json
 }
 
 ###
+# should give status_code 400 (Bad Method)
+# returns validation error "user name should be at least of 4 characters"
+POST http://localhost:80/api/bookings
+Content-Type: application/json
+
+{
+  "username": "jo",
+  "date": "2021-04-01"
+}
+
+###
+# should give message not found
+# status_code 404 not found
+POST http://localhost:80/api/not/found
+Content-Type: application/json
+
+{
+  "username": "jo",
+  "date": "2021-04-01"
+}
+###
+# should give message Method not allowed.
+# status code 405
+PUT http://localhost:80/api/bookings
+Content-Type: application/json
+
+{
+  "username": "jo",
+  "date": "2021-04-01"
+}

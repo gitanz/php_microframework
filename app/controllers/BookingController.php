@@ -30,7 +30,7 @@ class BookingController
         $bookingModel->mapParameters($input);
         $status = $this->attemptBooking($bookingModel);
         list($response_code, $status_message) = $status ?
-                                                [200, "Successfully booked"] :
+                                                [201, "Successfully booked"] :
                                                 [403, "Failed booking"];
 
         $response->toJson([
