@@ -16,19 +16,23 @@ class RouteDispatcher
 
     public function process($route, $arguments)
     {
+        /*
+         * TODO refactor
+         * */
         list($controller, $action) =  explode('@', $route->action);
-        $controller = $this->container->create('\controllers\\'.$controller);
+        $controller = $this->container->create('app\controllers\\'.$controller);
         $reflection = new \ReflectionClass(get_class($controller));
         $method = $reflection->getMethod($action);
         $parameters = $method->getParameters();
         $dependencies = [];
-        foreach ($parameters as $parameter) {
+        foreach ($parameters as $parameter)
+        {
             if(!is_null($parameter->getClass()))
             {
                 $dependencies[] = $this->container->create($parameter->getClass()->name);
             }
         }
-        $dependencies = $dependencies + $arguments;
+        $dependencies = [...$dependencies, ...$arguments];
         return $controller->$action(...$dependencies);
     }
 }

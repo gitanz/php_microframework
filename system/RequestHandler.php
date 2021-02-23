@@ -32,7 +32,7 @@ class RequestHandler
 
     public function bootstrap()
     {
-        require_once "routing/routes.php";
+        require_once "app/routes.php";
     }
 
     public function dispatcher()

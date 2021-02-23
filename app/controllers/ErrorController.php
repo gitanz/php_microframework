@@ -1,7 +1,7 @@
 <?php
 
 
-namespace controllers;
+namespace app\controllers;
 
 
 use system\Request;

@@ -35,6 +35,20 @@ class Response
         return $data;
     }
 
+    public function send400($errors)
+    {
+        $headers = ["Content-Type" => "application/json"];
+        http_response_code(400);
+        foreach($headers as $name => $text)
+        {
+            header("$name: $text");
+        }
+        $data = ["success"=>false, "message"=>"Invalid request", "data" => $errors];
+        echo json_encode($data);
+        $this->handled = true;
+        return $data;
+    }
+
     public function send404()
     {
         $headers = ["Content-Type" => "application/json"];

@@ -1,10 +1,22 @@
-PUT http://glofox.local/api/say/1
-Content-Type: application/x-www-form-urlencoded
+POST http://glofox.local/api/say/1/hello
+Content-Type: multipart/form-data; boundary=WebAppBoundary
 
-id=99&content=new-element
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
 
-###
-GET http://localhost:80/api/item?id=99
-Accept: application/json
+name
+--WebAppBoundary--
+Content-Disposition: form-data; name="end_date"
+
+2020-01-02
+--WebAppBoundary--
+Content-Disposition: form-data; name="start_date"
+
+2020-01-20
+--WebAppBoundary--
+Content-Disposition: form-data; name="capacity"
+
+20
+--WebAppBoundary--
 
 ###
