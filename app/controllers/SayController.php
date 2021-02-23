@@ -16,12 +16,7 @@ class SayController extends BaseController
 
     public function hello(SayRequest $request, Response $response, $id)
     {
-        if ($request->validator->isValid()) {
-            $response->toJson($request->request->getInput()->data);
-        } else {
-            $response->send400($request->validator->getErrors());
-        }
-
+        $response->toJson($request->request->getInput()->data);
     }
 
 }

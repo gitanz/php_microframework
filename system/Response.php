@@ -45,8 +45,8 @@ class Response
         }
         $data = ["success"=>false, "message"=>"Invalid request", "data" => $errors];
         echo json_encode($data);
-        $this->handled = true;
-        return $data;
+        exit;
+
     }
 
     public function send404()
@@ -59,8 +59,7 @@ class Response
         }
         $data = ["success"=>false, "message"=>"Not found"];
         echo json_encode($data);
-        $this->handled = true;
-        return $data;
+        exit;
     }
 
     public function send405()
@@ -74,7 +73,6 @@ class Response
         $data = ["success"=>false, "message"=>"Method not allowed"];
         echo json_encode($data);
         $this->handled = true;
-        return $data;
     }
 
     public function isHandled()

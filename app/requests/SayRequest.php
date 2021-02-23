@@ -4,23 +4,21 @@
 namespace app\requests;
 
 
+use routing\FormRequest;
 use system\Request;
 use app\validators\Validator;
 
-class SayRequest
+class SayRequest extends FormRequest
 {
     public Request $request;
     public Validator $validator;
 
-    public function __construct(Request $request, Validator $validator)
+    public function __construct(Request $request)
     {
-
-        $this->validator = $validator;
         $this->request = $request;
-        $this->validator->validate($request->getInput()->data, $this->rules());
     }
 
-    private function rules()
+    protected function rules()
     {
         return [
             'name' => ['required', 'min:4' ,'max:255'],
@@ -29,6 +27,4 @@ class SayRequest
             'capacity' => ['numeric', 'min:10', 'max:30']
         ];
     }
-
-
 }
