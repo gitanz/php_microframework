@@ -1,8 +1,10 @@
 <?php
 
 
-namespace app\validators;
+namespace system;
 
+
+use app\validators\Rules;
 
 class Validator
 {

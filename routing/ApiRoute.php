@@ -6,8 +6,8 @@ namespace routing;
 
 use InvalidArgumentException;
 /*
- * TODO use factory pattern
- * create object for this class ApiRoute and WebRoute via factory
+ * TODO use factories pattern
+ * create object for this class ApiRoute and WebRoute via factories
  * */
 class ApiRoute
 {
@@ -29,7 +29,7 @@ class ApiRoute
     public function getIndex()
     {
         $this->uriRegexer();
-        return $this->uri;
+        return $this->method.$this->uri;
     }
 
     public function uriRegexer()

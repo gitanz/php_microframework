@@ -14,7 +14,7 @@ class ArgumentsFilter implements PipelineProcessor
         /* use the first route among the filtered */
         $selected_route = array_shift($routes);
         $requestUri = $request->getUri()->uri();
-        $matched = preg_match("/^{$selected_route->index}$/", $requestUri, $matches);
+        $matched = preg_match("/^{$selected_route->uri}$/", $requestUri, $matches);
         if($matched){
             array_shift($matches);
         }

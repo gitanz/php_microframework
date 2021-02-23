@@ -18,7 +18,7 @@ class Uri
         $this->hostname = $_SERVER['HTTP_HOST'];
         $this->port = $_SERVER['SERVER_PORT'];
         $this->base_url = "{$this->scheme}://{$this->hostname}" . ($this->port != 80 ? ": {$this->port}" : '');
-        $this->uri = $requestUri = rtrim($_SERVER['REQUEST_URI'], '/');
+        $this->uri = $requestUri = rtrim($_SERVER['PATH_INFO'], '/');
     }
 
     public static function getInstance()

@@ -11,7 +11,7 @@ class Input
 
     private function __construct()
     {
-        $this->data = $_POST;
+        $this->data = (array)json_decode(file_get_contents("php://input"), true);
     }
 
     public static function getInstance()

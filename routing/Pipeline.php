@@ -26,6 +26,7 @@ class Pipeline
         foreach($pipes as $pipe)
         {
             list($this->mixed, $this->error, $this->output) = $pipe->process($this->mixed, $this->using);
+
             if($this->error)
             {
                 $this->errorOutlet();

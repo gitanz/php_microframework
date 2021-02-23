@@ -21,7 +21,7 @@ class Response
         return self::$instance;
     }
 
-    public function toJson(array $data, $response_code=200, array $headers = [])
+    public function toJson($data, $response_code=200, array $headers = [])
     {
         $headers += ["Content-Type" => "application/json"];
         http_response_code($response_code);

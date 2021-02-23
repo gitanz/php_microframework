@@ -12,6 +12,7 @@ class MethodFilter implements PipelineProcessor
     public function process($routes, Request $request)
     {
         $requestMethod = $request->getHttpMethod()->get();
+
         $filtered_routes =  array_filter($routes,
                 function ($route) use ($requestMethod) {
                     return $route->method == $requestMethod;

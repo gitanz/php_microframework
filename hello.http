@@ -1,22 +1,22 @@
-POST http://glofox.local/api/say/1/hello
-Content-Type: multipart/form-data; boundary=WebAppBoundary
 
---WebAppBoundary
-Content-Disposition: form-data; name="name"
+POST http://localhost:80/api/class
+Content-Type: application/json
 
-anooz
---WebAppBoundary--
-Content-Disposition: form-data; name="start_date"
+{
+  "class_name": "Pilates",
+  "start_date": "2021-04-01",
+  "end_date": "2021-04-10",
+  "capacity": "20"
+}
 
-2020-01-02
---WebAppBoundary--
-Content-Disposition: form-data; name="end_date"
+###
 
-2020-01-20
---WebAppBoundary--
-Content-Disposition: form-data; name="capacity"
+POST http://localhost:80/api/bookings
+Content-Type: application/json
 
-20
---WebAppBoundary--
+{
+  "username": "john_doe",
+  "date": "2021-04-01"
+}
 
 ###

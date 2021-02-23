@@ -85,6 +85,7 @@ class Router
     {
         try
         {
+
             return (new Pipeline($this->apiRoutes(), $request))
                 ->through(
                 [
