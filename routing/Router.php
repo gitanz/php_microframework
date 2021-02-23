@@ -76,6 +76,12 @@ class Router
         $this->routes['api'][$apiRoute->index] = $apiRoute;
     }
 
+    public function options($uri, $action)
+    {
+        $apiRoute = new ApiRoute('OPTIONS', $uri, $action);
+        $this->routes['api'][$apiRoute->index] = $apiRoute;
+    }
+
     public function apiRoutes()
     {
         return $this->routes['api']?? null;

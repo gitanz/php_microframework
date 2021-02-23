@@ -7,16 +7,19 @@ namespace app\controllers;
 use system\Request;
 use system\Response;
 
-class ErrorController
+class OptionsController
 {
     public function __construct()
     {
 
     }
 
-    public function notFound(Request  $request, Response $response)
+    /*
+     * Preflight
+     * */
+    public function handleCors(Request  $request, Response $response)
     {
-        $response->toJson(["success" => false, "message" => "Not found"], 404);
+        $response->sendCors();
     }
 
 
