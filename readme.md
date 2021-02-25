@@ -5,7 +5,7 @@
 
 - basic app workflow 
 1. routes.php has routes registered
-2. matches to given controller@method
+2. matches to give controller@method
 3. method can be injected with FormRequests
 which processes validation
 
@@ -26,5 +26,4 @@ which processes validation
 
 </VirtualHost>
 ```
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 
